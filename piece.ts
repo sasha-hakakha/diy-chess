@@ -1,51 +1,58 @@
+/*
+
+Should we be using an icon name string?
+  */
+
 class Peice{
     name: string;
     movement: MovementType;
-    constructor(name: string, movement: MovementType){
+    icon_name: string;
+    constructor(name: string, movement: MovementType, icon_name: string){
         this.name = name;
         this.movement = movement;
+        this.icon_name = icon_name;
     }
 }
 
 class MovementType{
-    limit: bigint;
-    constructor(limit: bigint){
+    limit: number;
+    constructor(limit: number){
         this.limit = limit;
     }
 }
 
 class VerticalMovement extends MovementType{
-    up: bool;
-    constructor(up: bool, limit: bigint){
-        this.up = up;
+    up: boolean;
+    constructor(up: boolean, limit: number){
         super(limit);
+        this.up = up;
     }
 }
 
 class HorizontalMovement extends MovementType{
-    left: bool;
-    constructor(left: bool, limit: bigint){
-        this.left = left;
+    left: boolean;
+    constructor(left: boolean, limit: number){
         super(limit);
+        this.left = left;
     }
 }
 
-class DiagonalMovmenet extends MovmenetType{
-    up: bool;
-    left: bool;
-    constructor(up: bool, left: bool, limit: bigint){
+class DiagonalMovement extends MovementType{
+    up: boolean;
+    left: boolean;
+    constructor(up: boolean, left: boolean, limit: number){
+        super(limit);
         this.up = up;
         this.left = left;
-        super(limit);
     }
 }
 
-class LMovmenet extends MovementType{
-    horizontal_length = bigint;
-    vertical_length = bigint;
-    constructor(h: bigint, v: bigint; up: bool, left: bool, limit:bigint){
+class LMovmenet extends DiagonalMovement{
+    horizontal_length: number;
+    vertical_length: number;
+    constructor(h: number, v: number, up: boolean, left: boolean, limit:number){
+        super(up, left, limit);
         this.horizontal_length = h;
         this.vertical_length = v;
-        super(up, left, limit);
     }
 }
