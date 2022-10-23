@@ -1,0 +1,14 @@
+
+
+class hold:
+    def __init__(self, method: staticmethod):
+        self.method = method
+
+def add_one(x):
+    return x + 1
+
+one = 1
+
+holder = hold(add_one())
+
+print(holder.method(1))
